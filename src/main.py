@@ -3,6 +3,9 @@ import requests
 
 API_URL = "https://api-refaccionaria-falla-vinculo-production.up.railway.app/producto/"
 
+#INARMA01 CENTRO
+#INARMA02 CBETIS
+
 def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.LIGHT
     page.theme = ft.Theme(color_scheme_seed=ft.Colors.GREEN)
@@ -12,7 +15,7 @@ def main(page: ft.Page):
     
 
     logo = ft.Image(
-    src="https://i.ibb.co/nNPf9yXK/Whats-App-Image-2025-05-13-at-15-40-55-2d8a555d.jpg", 
+    src="https://i.ibb.co/xSR9dKb7/falla-Motul.jpg",
     width=60,
     height=60,
     fit=ft.ImageFit.CONTAIN
@@ -52,7 +55,7 @@ def main(page: ft.Page):
     resultado_card = ft.Container(
         ft.Row([
             ft.Image(
-            src="https://i.ibb.co/nNPf9yXK/Whats-App-Image-2025-05-13-at-15-40-55-2d8a555d.jpg", 
+            src="https://i.ibb.co/xSR9dKb7/falla-Motul.jpg",
             width=250,
             height=250,
             fit=ft.ImageFit.CONTAIN
@@ -89,7 +92,7 @@ def main(page: ft.Page):
                 # Iteración sobre los dos resultados
                 for indice, producto_data in enumerate(data_listas):
 
-                    nombre_tabla = f"TEARMA0{indice + 1}"
+                    nombre_tabla = indice
                     color_fondo = ft.colors.BLUE_GREY_100 if indice == 0 else ft.colors.YELLOW_100
 
                     # 1. Verificamos si el diccionario NO está vacío ({})
@@ -100,7 +103,7 @@ def main(page: ft.Page):
                         tarjeta_producto = ft.Card(
                             content=ft.Container(
                                 content=ft.Column([
-                                    ft.Text(f"DATOS DE LA TABLA: {nombre_tabla}", size=16, weight=ft.FontWeight.BOLD,
+                                    ft.Text("CENTRO" if nombre_tabla == 0 else "CBTIS", size=16, weight=ft.FontWeight.BOLD,
                                             color=ft.colors.BLACK, bgcolor=color_fondo),
                                     ft.Divider(),
                                     ft.Text(f"🛠 Nombre: {producto_data['nombre']}", size=20, weight=ft.FontWeight.BOLD),
@@ -201,12 +204,12 @@ def main(page: ft.Page):
                 todos_los_productos = []
 
                 for producto in data_listas_productos[0]:
-                    producto['origen'] = 'TEARMA01'
+                    producto['origen'] = 'CENTRO'
                     todos_los_productos.append(producto)
 
                 if len(data_listas_productos) > 1:
                     for producto in data_listas_productos[1]:
-                        producto['origen'] = 'TEARMA02'
+                        producto['origen'] = 'CBTIS'
                         todos_los_productos.append(producto)
 
                 productos_ordenados = sorted(todos_los_productos, key=lambda p: p['nombre'])
@@ -215,7 +218,7 @@ def main(page: ft.Page):
 
                 for producto in productos_ordenados:
                     tabla_tag = producto['origen']
-                    color_fondo = ft.Colors.ORANGE_800 if tabla_tag == "TEARMA01" else ft.Colors.YELLOW_800
+                    color_fondo = ft.Colors.ORANGE_800 if tabla_tag == "CENTRO" else ft.Colors.YELLOW_800
 
                     columnas.append(
                         ft.Container(
@@ -271,12 +274,12 @@ def main(page: ft.Page):
                 todos_los_productos = []
 
                 for producto in data_listas_productos[0]:
-                    producto['origen'] = 'TEARMA01'
+                    producto['origen'] = 'CENTRO'
                     todos_los_productos.append(producto)
 
                 if len(data_listas_productos) > 1:
                     for producto in data_listas_productos[1]:
-                        producto['origen'] = 'TEARMA02'
+                        producto['origen'] = 'CBTIS'
                         todos_los_productos.append(producto)
 
                 productos_ordenados = sorted(todos_los_productos, key=lambda p: p['nombre'])
@@ -285,7 +288,7 @@ def main(page: ft.Page):
 
                 for producto in productos_ordenados:
                     tabla_tag = producto['origen']
-                    color_fondo = ft.Colors.ORANGE_800 if tabla_tag == "TEARMA01" else ft.Colors.YELLOW_800
+                    color_fondo = ft.Colors.ORANGE_800 if tabla_tag == "CENTRO" else ft.Colors.YELLOW_800
 
                     columnas.append(
                         ft.Container(
