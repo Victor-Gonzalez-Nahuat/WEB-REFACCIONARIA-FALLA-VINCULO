@@ -1,7 +1,12 @@
+import os
+
 import flet as ft
 import requests
+from dotenv import load_dotenv
 
-API_URL = "https://api-refaccionaria-falla-vinculo-production.up.railway.app/producto/"
+load_dotenv()
+
+API_URL = os.getenv("API_URL")
 
 #INARMA01 CENTRO
 #INARMA02 CBETIS
